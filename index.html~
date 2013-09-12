@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html manifest="off.manifest">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Gerenciador</title>
+		<!--Scripts jQuery/jQuery Mobile-->
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script> 
+		<script type="text/javascript" src="http://code.jquery.com/mobile/latest/jquery.mobile.min.js"></script>
+		<script type="text/javascript" src="offJS.js"></script>
+		<!--Scripts jQuery Date box-->
+		<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.core.min.js"></script>
+		<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.mode.datebox.min.js"></script>
+
+		<!--Folha de estilo jQuery Mobile-->
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css"/>
+		<link rel="stylesheet" type="text/css" href="http://code.jquery.com/mobile/latest/jquery.mobile.min.css" />
+		<link rel="stylesheet" type="text/css" href="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.min.css" /> 
+		<link type="text/css" href="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog.min.css" rel="stylesheet" /> 
+		<link type="text/css" href="http://dev.jtsage.com/jQM-DateBox2/css/demos.css" rel="stylesheet" /> 
+		<link rel="stylesshet" type="text/css" href="styles.css"/>
+		<script>
+			$(function() {
+				setTimeout(hideSplash, 3000);
+			});
+
+			function hideSplash() {
+			  $.mobile.changePage("#home", "fade");
+			}
+		</script>
+	</head>
+
+	<body onload="onInit()">
+
+		<div data-role="page" id="splash"> 
+			<div class="splash">
+				<img style="margin-top:20%; margin-left:28%;" src="styles/task-management.png" alt="splash" />
+				<h3 style="font-size: 27px; font-family: Purisa; margin-left: 14px;">Gerenciador de tarefas</h3>
+
+				<img src="styles/loading.gif" style="margin-left: 159px;width: 18%;" alt="onload"/>
+				<p style="margin-left: 121px; margin-top: 60px;">Juliana Rohrbacher</p>
+				<p style="margin-left: 161px;">BSI-10 </p> 
+				<p style="margin-left: 106px;">Sistemas de Informação</p>
+			</div>
+		</div>
+		<!--Home - Gerenciador de tarefas-->
+		<div data-role="page" id="home">
+			<!--Header-->
+			<div data-role="header" data-theme="b">
+			<h1 data-icon="home">Minhas tarefas</h1>
+			</div>
+			<!--Listagem de tarefas-->
+			<!--Content-->
+			<div data-role="content">
+
+			<ul id="itemData" data-role="listview" data-dividertheme="b" data-filter="true" data-inset="true">
+			<li data-role="list-divider">A fazer</li>
+			</ul>
+			<a href="#contato" data-role="button" data-icon="plus" data-theme="b">Adicionar novo</a>
+			<div style="color: red;" class="status"></div>
+			</div>
+		</div>
+		<div data-role="page" id="contato" data-theme="b">
+		<!--Header-->
+			<div data-role="header" data-theme="b">
+			<a href="#" data-role="button" data-icon="home" data-rel="back">Voltar</a>
+			<h1>Adicionar/Editar</h1>
+			</div>
+		<!--Content-->
+		<div page-role="content" class="ui-bar">
+
+			<form name="itemForm">
+				<input type="hidden" name="id" id="id" size=2 disabled="true"/>
+				<label for="nome">Contato:</label><input type="text" name="nome" id="nome" size=10/>					
+				<label for="telefone">Telefone:</label><input type="tel" name="telefone" id="telefone"/>
+				<label for="tarefa">Descrição:</label><input type="text" name="descricao" id="descricao"/>
+				<label for="descricao">Endereço:</label><input type="text" name="endereco" id="endereco"/>
+				<h1 style="margin-top: 11px;">Horário agendado</h1>
+				<div data-role="fieldcontain">
+				<label for="mode2">Data:</label>
+				<input name="mode2" id="mode2" type="text" data-role="datebox" data-options='{"mode":"datebox", "useNewStyle":true}' />
+				<label for="mode6">Hora:</label>
+				<input name="mode6" id="mode6" type="text" data-role="datebox" data-options='{"mode":"timebox", "useNewStyle":true}' /></div>
+			</form>
+
+			<div class="status"></div>
+		</div>
+		<!--Footer-->
+		<div data-role="footer" data-theme="b">
+			<a href="#" onclick="onSave()" name="salvar" value="Salvar" data-role="button" data-icon="check">Salvar</a>
+			<a href="#listar" data-role="button" data-icon="refresh" data-transition='slideupUp' data-rel='back'>Cancelar</a>
+			<a href="#" onclick="onDelete()" name="deletar" value="Deletar" data-role="button" data-icon="delete">Deletar</a>
+		</div>
+		</div>
+	</body>
+
+</html>
+	
+
