@@ -5,23 +5,24 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Gerenciador</title>
 		<!--Scripts jQuery/jQuery Mobile-->
-		<script type="text/javascript" src="../jQuery/jquery-1.7.2.min.js"></script> 
-		<script type="text/javascript" src="../jQuery/jquery.mobile-1.3.2.min.js"></script>
-		<script type="text/javascript" src="../DAO/dao.js"></script>
-		<script type="text/javascript" src="../Model/db.js"></script>
-		<script type="text/javascript" src="../Model/tarefa.js"></script>
-		<script type="text/javascript" src="../Controller/controller.js"></script>
+		<script type="text/javascript" src="jQuery/jquery-1.7.2.min.js"></script> 
+		<script type="text/javascript" src="jQuery/jquery.mobile-1.3.2.min.js"></script>
+		<script type="text/javascript" src="DAO/dao.js"></script>
+		<script type="text/javascript" src="Model/db.js"></script>
+		<script type="text/javascript" src="Model/tarefa.js"></script>
+		<script type="text/javascript" src="Controller/controller.js"></script>
 		<!--Scripts jQuery Date box-->
 		<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.core.min.js"></script>
 		<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.mode.datebox.min.js"></script>
-
+		<script src="js/cordova.js"></script>
+		
 		<!--Folha de estilo jQuery Mobile-->
-		<link rel="stylesheet" href="../jQuery/jquery.mobile-1.3.2.min.css"/>
-		<link rel="stylesheet" type="text/css" href="../jQuery/jquery.mobile-1.3.2.min.css" />
+		<link rel="stylesheet" href="jQuery/jquery.mobile-1.3.2.min.css"/>
+		<link rel="stylesheet" type="text/css" href="jQuery/jquery.mobile-1.3.2.min.css" />
 		<link rel="stylesheet" type="text/css" href="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.min.css" /> 
 		<link type="text/css" href="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog.min.css" rel="stylesheet" /> 
 		<link type="text/css" href="http://dev.jtsage.com/jQM-DateBox2/css/demos.css" rel="stylesheet" /> 
-		<link rel="stylesshet" type="text/css" href="GUI/styles.css"/>
+		<link rel="stylesshet" type="text/css" href="styles/styles.css"/>
 		<script>
 			$(function() {
 				setTimeout(hideSplash, 3000);
@@ -31,16 +32,72 @@
 			  $.mobile.changePage("#home", "fade");
 			}
 		</script>
+		
+		<script type="text/javascript">
+		
+			function MyDevice() {
+				var name;
+				var cordova;
+				var platform;
+				var uuid;
+				var version;
+				var model;
+				
+				function toString () {
+					return "Dispositivo:" + self.name + "/n "
+					"Nome modelo:" + self.name;
+					"Sistema:" + self.plataform;
+					"Aparelho:" + self.uuid;
+					"Versão:" + self.version;
+					"Modelo:" + self.model;
+				}
+				
+				function checkConnection() {
+				var networkState = navigator.connection.type;
+
+				var states = {};
+				states[Connection.UNKNOWN]  = 'Unknown connection';
+				states[Connection.ETHERNET] = 'Ethernet connection';
+				states[Connection.WIFI]     = 'WiFi connection';
+				states[Connection.CELL_2G]  = 'Cell 2G connection';
+				states[Connection.CELL_3G]  = 'Cell 3G connection';
+				states[Connection.CELL_4G]  = 'Cell 4G connection';
+				states[Connection.CELL]     = 'Cell generic connection';
+				states[Connection.NONE]     = 'No network connection';
+
+				alert('Connection type: ' + states[networkState]);
+			}
+				
+			}
+			
+			function inicializar(){
+				oAgenda = new MyDevice;
+				
+				oMyDevice = new MyDevice;
+				oMyDevice.name = device.name;
+				oMyDevice.cordova = device.cordova;
+				oMyDevice.platform = device.plataform;
+				oMyDevice.uuid = device.uuid;
+				oMyDevice.version = device.version;
+				oMyDevice.model = device.model;
+				
+				alert(oMyDevice.toString());
+				alert(checkConnection());
+			}
+			
+			
+		</script>
+		
 	</head>
 
-	<body onload="onInit()">
+	<body onload="onInit(), inicializar()">
 
 		<div data-role="page" id="splash"> 
 			<div class="splash">
-				<img style="margin-top:20%; margin-left:28%;" src="../styles/task-management.png" alt="splash" />
+				<img style="margin-top:20%; margin-left:28%;" src="styles/task-management.png" alt="splash" />
 				<h3 style="font-size: 27px; font-family: Purisa; margin-left: 14px;">Gerenciador de tarefas</h3>
 
-				<img src="../styles/loading.gif" style="margin-left: 159px;width: 18%;" alt="onload"/>
+				<img src="styles/loading.gif" style="margin-left: 159px;width: 18%;" alt="onload"/>
 				<p style="margin-left: 121px; margin-top: 60px;">Juliana Rohrbacher</p>
 				<p style="margin-left: 161px;">BSI-10 </p> 
 				<p style="margin-left: 106px;">Sistemas de Informação</p>
